@@ -175,7 +175,7 @@ This project is actively maintained and will continue evolving alongside my expe
 
 ## Author
 
-**Graham Haus**
+**Graham Hauersperger**
 
 Founder  
 Space Monkey Technology
