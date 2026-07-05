@@ -1,120 +1,195 @@
 # Space Monkey Field AI
 
-Production-quality MVP for field technicians who need cautious AI support from job-site photos. Users can sign in, upload an equipment or issue photo, describe the situation, ask a question, and save an AI-generated analysis plus a customer-friendly service report.
+> AI-powered field technician software that analyzes equipment photos, assists with troubleshooting, and automatically generates professional service reports.
 
-## Tech stack
+Built by **Space Monkey Technology**.
 
-- Next.js App Router
+---
+
+## Overview
+
+Space Monkey Field AI is an AI-powered assistant designed for field technicians, service professionals, and contractors.
+
+The platform combines computer vision with large language models to analyze uploaded equipment photos, identify visible components, assist with troubleshooting, and generate professional service reports that can be saved for future reference.
+
+The objective is simple:
+
+**Reduce paperwork. Improve documentation. Help technicians solve problems faster.**
+
+This project represents the first production software application developed under the Space Monkey Technology brand and serves as the foundation for a growing suite of practical AI tools.
+
+---
+
+## Key Features
+
+- Secure user authentication
+- AI-powered image analysis
+- Equipment recognition
+- Intelligent troubleshooting guidance
+- Professional service report generation
+- Cloud-based job history
+- Responsive dashboard
+- Modern production-ready interface
+
+---
+
+## Technology Stack
+
+### Frontend
+
+- Next.js
 - TypeScript
 - Tailwind CSS
-- Supabase Auth, Postgres, and Storage
-- OpenAI Responses API for image analysis and report generation
-- Official OpenAI TypeScript SDK
 
-## Core safety behavior
+### Backend
 
-The analysis prompt is designed to:
+- OpenAI API
+- Supabase
 
-- avoid procedural instructions for dangerous electrical, gas, chemical, or structural work
-- recommend licensed professionals for high-risk issues
-- clearly state uncertainty
-- include a warning that image analysis is not a replacement for professional inspection
+### Infrastructure
 
-This app is decision support only. It should not be positioned as a replacement for qualified inspection or licensed trade work.
+- Vercel
+- Git
+- GitHub
 
-## Setup
+---
 
-1. Install dependencies:
+## How It Works
 
-```bash
-pnpm install
-```
+1. Create an account.
+2. Securely sign in.
+3. Upload a photo from the job site.
+4. Describe the issue or ask a question.
+5. The AI analyzes the image.
+6. Receive:
 
-2. Copy environment variables:
+- Equipment identification
+- Visible component analysis
+- Troubleshooting guidance
+- Safety considerations
+- Recommended next steps
+- Customer-ready service report
 
-```bash
-cp .env.example .env.local
-```
+7. Save the completed report to your account for future reference.
 
-3. Fill in `.env.local`:
+---
 
-```bash
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-OPENAI_API_KEY=your_openai_api_key
-# Optional override. Defaults to gpt-5.4-mini.
-OPENAI_FIELD_ANALYSIS_MODEL=gpt-5.4-mini
-```
+## Why I Built This
 
-4. In Supabase SQL Editor, run:
+Before pursuing software engineering and artificial intelligence, I spent years working in skilled trades and construction.
 
-```sql
--- supabase/schema.sql
-```
+One thing I noticed across every job was how much time technicians spend documenting work, identifying equipment, searching manuals, and writing reports after the actual job is complete.
 
-Paste the contents of `supabase/schema.sql`.
+I built Space Monkey Field AI to explore how modern AI can simplify those repetitive tasks and allow professionals to spend more time solving problems and less time completing paperwork.
 
-5. Start the app:
+This project also serves as a practical demonstration of my ongoing journey into AI software engineering while completing my Bachelor of Science in Artificial Intelligence.
 
-```bash
-pnpm dev
-```
+---
 
-Open `http://localhost:3000`.
+## Engineering Highlights
 
-## Supabase notes
+This project includes:
 
-- The app expects a public storage bucket named `job-images`.
-- Row-level security is enabled on `jobs`.
-- The API route uses `SUPABASE_SERVICE_ROLE_KEY` to save generated reports and upload images after validating the user's Supabase session.
-- Never expose the service role key in client-side code.
+- Full-stack application architecture
+- Secure authentication
+- Cloud database integration
+- AI image analysis
+- REST API development
+- Environment management
+- Production deployment
+- Git version control
 
-## OpenAI integration notes
+Developing this application required integrating multiple cloud services while solving authentication, deployment, API integration, database management, and production configuration challenges.
 
-- The field analysis endpoint uses the official OpenAI TypeScript SDK with `client.responses.create(...)`.
-- Image input is sent as a data URL: `data:<mime>;base64,<image-bytes>`.
-- Structured output is enforced with `text.format` and a strict JSON schema.
-- Server logs include a local request ID, OpenAI request ID when available, model, status, usage, image metadata, request summary, and API error body.
-- Logs intentionally exclude API keys and full base64 image data.
+---
 
-## Main routes
+## Current Release
 
-- `/` landing page
-- `/login` login and signup
-- `/dashboard` technician dashboard
-- `/jobs/new` new job analysis
-- `/jobs` job history
-- `/jobs/[id]` individual job report
+### Version 1.0
 
-## Development checks
+Current capabilities include:
 
-```bash
-pnpm typecheck
-pnpm lint
-pnpm build
-```
+- AI equipment analysis
+- Equipment recognition
+- Troubleshooting assistance
+- Professional report generation
+- Secure authentication
+- Cloud-based job history
 
-## Project structure
+---
 
-```text
-app/
-  api/analyze/route.ts
-  dashboard/page.tsx
-  jobs/page.tsx
-  jobs/new/page.tsx
-  jobs/[id]/page.tsx
-components/
-  auth-form.tsx
-  jobs/
-  layout/
-  ui/
-lib/
-  openai.ts
-  supabase-admin.ts
-  supabase-browser.ts
-  supabase-server.ts
-  types.ts
-supabase/
-  schema.sql
-```
+## Future Roadmap
+
+Future development will focus on expanding the platform with additional capabilities including:
+
+- Professional PDF service reports
+- Voice interaction
+- Live camera analysis
+- Equipment manual search using Retrieval-Augmented Generation (RAG)
+- Team collaboration
+- Smart glasses integration
+- Customer portals
+- Mobile application
+
+---
+
+## Live Application
+
+https://app.spacemonkeytechnology.com
+
+---
+
+## Company Website
+
+https://spacemonkeytechnology.com
+
+---
+
+## About Space Monkey Technology
+
+Space Monkey Technology is focused on building practical AI software that solves real-world problems.
+
+The mission is to create intelligent tools that improve productivity, reduce repetitive work, and help professionals make better decisions through artificial intelligence.
+
+Every product is built with the same philosophy:
+
+**Simple. Practical. Useful.**
+
+---
+
+## Repository Goals
+
+This repository documents the continued development of Space Monkey Field AI.
+
+Future commits will demonstrate:
+
+- New features
+- Engineering improvements
+- AI capability enhancements
+- Performance optimizations
+- User experience refinements
+
+This project is actively maintained and will continue evolving alongside my experience as an AI engineer.
+
+---
+
+## Author
+
+**Graham Haus**
+
+Founder  
+Space Monkey Technology
+
+Website  
+https://spacemonkeytechnology.com
+
+GitHub  
+https://github.com/spacemonkeytechnology
+
+---
+
+## License
+
+Copyright © 2026 Space Monkey Technology.
+
+All rights reserved.
